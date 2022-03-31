@@ -1,9 +1,21 @@
-export const NotFoundPage = () => (
-  <div class="notification is-danger is-light">
-    <button class="delete"></button>
-    Primar lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum
-    dolor. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut,
-    porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida
-    purus diam, et dictum felis venenatis efficitur.
-  </div>
-);
+import { Suspense } from "react";
+import { useTranslation } from "react-i18next";
+
+const NotFoundPage = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="notification is-danger">
+      <h1 className="title is-2 block">{t("notFoundPage.title")}</h1>
+      <h2 className="subtitle is-2 block">{t("notFoundPage.subtitle")}</h2>
+    </div>
+  );
+};
+
+export default function WrappedApp() {
+  return (
+    <Suspense>
+      <NotFoundPage />
+    </Suspense>
+  );
+}

@@ -1,24 +1,37 @@
 import "bulma/css/bulma.min.css";
 import { Navbar } from "./navbar/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import { NotFoundPage } from "./pages/NotFoundPage";
+import HomePage from "./pages/HomePage";
+import SettingsPage from "./pages/SettingsPage";
+import DocumentationPage from "./pages/DocumentationPage";
+import AboutPage from "./pages/AboutPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import packageJSON from "../package.json";
+import { Footer } from "./navbar/Footer";
+import { useTranslation } from "react-i18next";
 
 const App = () => {
-  return (
-    <Router
-      basename={
-        process.env.NODE_ENV === "production" ? `${packageJSON.name}/` : "/"
-      }
-    >
-      <Navbar />
-      <Routes>
-        <Route path={"/"} element={<Homepage />} exact />
+  const { t } = useTranslation();
+  document.title = t("homepage.title");
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Router>
+  return (
+    <>
+      <Router
+        basename={
+          process.env.NODE_ENV === "production" ? `${packageJSON.name}/` : "/"
+        }
+      >
+        <Navbar />
+        <Routes>
+          <Route path={"/"} element={<HomePage />} exact />
+          <Route path={"/settings"} element={<SettingsPage />} exact />
+          <Route path={"/docs"} element={<DocumentationPage />} exact />
+          <Route path={"/about"} element={<AboutPage />} exact />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Router>
+      <Footer />
+    </>
   );
 };
 
