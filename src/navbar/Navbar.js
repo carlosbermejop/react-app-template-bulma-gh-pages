@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [isActive, setActive] = useState(false);
@@ -32,10 +33,18 @@ export const Navbar = () => {
         className={isActive ? "navbar-menu is-active" : "navbar-menu"}
       >
         <div className="navbar-start">
-          <div className="navbar-item">Inicio</div>
-          <div className="navbar-item">Ajustes</div>
-          <div className="navbar-item">Documentación</div>
-          <div className="navbar-item">Acerca de</div>
+          <div className="navbar-item">
+            <Link to={"/"}>Inicio</Link>
+          </div>
+          <div className="navbar-item">
+            <Link to={"/settings"}>Ajustes</Link>
+          </div>
+          <div className="navbar-item">
+            <Link to={"/docs"}>Documentación</Link>
+          </div>
+          <div className="navbar-item">
+            <Link to={"/about"}>Acerca de</Link>
+          </div>
         </div>
       </div>
     </nav>
