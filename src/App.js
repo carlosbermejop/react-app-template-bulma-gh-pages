@@ -1,5 +1,5 @@
 import "bulma/css/bulma.min.css";
-import { Navbar } from "./Navbar/Navbar";
+import { Navbar } from "./navbar/Navbar";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import { NotFoundPage } from "./pages/NotFoundPage";

@@ -1,11 +1,11 @@
 import { screen, render } from "@testing-library/react";
 import * as ReactDOMClient from "react-dom/client";
 import App from "./App";
-import { Navbar } from "./Navbar/Navbar";
+import { Navbar } from "./navbar/Navbar";
 import HomePage from "./pages/Homepage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
-jest.mock("./Navbar/Navbar");
+jest.mock("./navbar/Navbar");
 jest.mock("./pages/Homepage");
 jest.mock("./pages/NotFoundPage");
 
@@ -20,7 +20,7 @@ afterAll(() => {
 });
 
 afterAll(() => {
-  jest.unmock("./Navbar/Navbar");
+  jest.unmock("./navbar/Navbar");
   jest.unmock("./pages/Homepage");
   jest.unmock("./pages/NotFoundPage");
 });
