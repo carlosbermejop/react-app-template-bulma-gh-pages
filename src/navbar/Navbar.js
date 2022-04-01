@@ -21,7 +21,7 @@ export const Navbar = () => {
       <div className="navbar-brand">
         <a
           role="button"
-          className={isActive ? "navbar-burger is-active" : "navbar-burger"}
+          className={isActive ? "navbar-burger has-background-dark is-active" : "navbar-burger has-background-dark"}
           aria-label="menu"
           aria-expanded="false"
           data-target="basicNavbar"
@@ -34,7 +34,7 @@ export const Navbar = () => {
       </div>
       <div
         id="basicNavbar"
-        className={isActive ? "navbar-menu is-active" : "navbar-menu"}
+        className={isActive ? "navbar-menu has-background-dark is-active" : "navbar-menu has-background-dark"}
       >
         <div className="navbar-start">
           <div className="navbar-item">
@@ -58,12 +58,12 @@ export const Navbar = () => {
             </Link>
           </div>
         </div>
-        <div className="navbar-end">
-          <div className="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">{t("navbar.languagesItem")}</a>
-            <div className="navbar-dropdown">
+        <div className="navbar-end has-background-dark">
+          <div className="navbar-item has-dropdown is-hoverable ">
+            <a class="navbar-link has-text-white">{t("navbar.languagesItem")}</a>
+            <div className="navbar-dropdown has-background-dark">
               <a
-                className="navbar-item"
+                className="navbar-item has-text-white"
                 onClick={() => {
                   i18n.changeLanguage("es");
                 }}
@@ -71,7 +71,7 @@ export const Navbar = () => {
                 Español
               </a>
               <a
-                className="navbar-item"
+                className="navbar-item has-text-white"
                 onClick={() => {
                   i18n.changeLanguage("en");
                 }}
@@ -79,7 +79,7 @@ export const Navbar = () => {
                 English
               </a>
               <a
-                className="navbar-item"
+                className="navbar-item has-text-white"
                 onClick={() => {
                   console.log(i18n.language);
                   return i18n.changeLanguage("fr");

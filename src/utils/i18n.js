@@ -2,6 +2,7 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import Backend from "i18next-http-backend";
+import packageJSON from "../../package.json";
 
 i18n
   // detect user language
@@ -15,6 +16,12 @@ i18n
   .init({
     debug: true,
     fallbackLng: "en",
+    backend: {
+      loadPath:
+        process.env.NODE_ENV === "production" && packageJSON.homepage
+          ? `${packageJSON.homepage}/locales/{{lng}}/{{ns}}.json`
+          : "/locales/{{lng}}/{{ns}}.json",
+    },
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
