@@ -10,7 +10,7 @@ export const Footer = () => (
         class="navbar-item"
         href="https://github.com/carlosbermejop"
         target="_blank"
-        rel="noreferrer"
+        rel="noreferrer noopener"
       >
         <img
           src={gitHubLogo}
@@ -23,7 +23,7 @@ export const Footer = () => (
         className="navbar-item"
         href="https://twitter.com/Carlos_BWE"
         target="_blank"
-        rel="noreferrer"
+        rel="noreferrer noopener"
       >
         <img src={twitterLogo} width="32" alt="@Carlos_BWE" />
       </a>
@@ -31,7 +31,7 @@ export const Footer = () => (
         className="navbar-item"
         href="https://www.linkedin.com/in/carlos-bermejo-p%C3%A9rez-82442437/"
         target="_blank"
-        rel="noreferrer"
+        rel="noreferrer noopener"
       >
         <img
           src={linkedInLogo}
@@ -43,13 +43,23 @@ export const Footer = () => (
         className="navbar-item"
         href="mailto:carlosbermejop@gmail.com"
         target="_blank"
-        rel="noreferrer"
+        rel="noreferrer noopener"
       >
         <img
           src={mailLogo}
           width="34"
           height="37"
           alt="mailto:carlosbermejop@gmail.com"
+        />
+      </a>
+      <a className="navbar-item" href="https://bulma.io">
+        <img
+          src="https://bulma.io/images/made-with-bulma.png"
+          target="_blank"
+          rel="noreferrer noopener"
+          alt="Made with Bulma"
+          width="128"
+          height="24"
         />
       </a>
     </div>
