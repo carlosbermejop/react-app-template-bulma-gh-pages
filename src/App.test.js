@@ -2,11 +2,11 @@ import { screen, render } from "@testing-library/react";
 import * as ReactDOMClient from "react-dom/client";
 import App from "./App";
 import { Navbar } from "./navbar/Navbar";
-import HomePage from "./pages/Homepage";
-import { NotFoundPage } from "./pages/NotFoundPage";
+import HomePage from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 jest.mock("./navbar/Navbar");
-jest.mock("./pages/Homepage");
+jest.mock("./pages/HomePage");
 jest.mock("./pages/NotFoundPage");
 
 let container;
@@ -21,7 +21,7 @@ afterAll(() => {
 
 afterAll(() => {
   jest.unmock("./navbar/Navbar");
-  jest.unmock("./pages/Homepage");
+  jest.unmock("./pages/HomePage");
   jest.unmock("./pages/NotFoundPage");
 });
 
@@ -32,7 +32,7 @@ describe("App Tests", () => {
     NotFoundPage.mockImplementation(() => <div>NotFoundPageMock</div>);
 
     // eslint-disable-next-line testing-library/no-unnecessary-act
-      render(<App />);
+    render(<App />);
 
     expect(screen.getByText("NavbarMock")).toBeInTheDocument();
     expect(screen.getByText("HomePageMock")).toBeInTheDocument();

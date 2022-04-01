@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+- [React App Template With Bulma CSS and Deployment to GitHub Pages](#react-app-template-with-bulma-css-and-deployment-to-github-pages)
+  - [Available Scripts](#available-scripts)
+    - [`yarn start`](#yarn-start)
+    - [`yarn test`](#yarn-test)
+    - [`yarn build`](#yarn-build)
+    - [`yarn eject`](#yarn-eject)
+    - [`yarn deploy`](#yarn-deploy)
+  - [Localization with l18n-react](#localization-with-l18n-react)
+  - [Learn More](#learn-more)
+    - [Code Splitting](#code-splitting)
+    - [Analyzing the Bundle Size](#analyzing-the-bundle-size)
+    - [Making a Progressive Web App](#making-a-progressive-web-app)
+    - [Advanced Configuration](#advanced-configuration)
+    - [Deployment](#deployment)
+    - [`yarn build` fails to minify](#yarn-build-fails-to-minify)
+  - [License](#license)
+
+# React App Template With Bulma CSS and Deployment to GitHub Pages
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -39,6 +56,19 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+### `yarn deploy`
+
+To deploy the project automatically to GitHub Pages, create a property in package.json called `homepage` and run the command. The format should be the following: `https://{username}.github.io/{repo-name}`
+
+For instance:
+`"homepage": "https://carlosbermejop.github.io/react-app-template-bulma-gh-pages,"`
+
+## Localization with l18n-react
+Localization is implemented through [react-i18next](https://react.i18next.com/). All localized strings should be kept at `/public/locales/{{language_name}}/translation.json`. 
+
+Currently, the translations are served by a backend using [i18next-http-backend](https://github.com/i18next/i18next-http-backend). That also implies using React 18's [Suspense experimental feature](https://17.reactjs.org/docs/concurrent-mode-suspense.html). Once a stable version is deployed, the implementation will be updated.
+
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
@@ -68,3 +98,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## License
+
+Create React App is open source software [licensed as MIT](https://github.com/facebook/create-react-app/blob/main/LICENSE). The Create React App logo is licensed under a [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
