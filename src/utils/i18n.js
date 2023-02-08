@@ -1,30 +1,39 @@
 import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
+import {initReactI18next} from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import Backend from "i18next-http-backend";
-import packageJSON from "../../package.json";
+import enl18n from "../assets/locales/en/translation.json";
+import esl18n from "../assets/locales/es/translation.json";
+import frl18n from "../assets/locales/fr/translation.json";
+
+const resources = {
+  en: {
+    translation: enl18n,
+  },
+  es: {
+    translation: esl18n,
+  },
+  fr: {
+    translation: frl18n,
+  },
+};
 
 i18n
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
-  .use(Backend)
+  // .use(Backend)
   .use(LanguageDetector)
   // pass the i18n instance to react-i18next.
   .use(initReactI18next)
   // init i18next
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
-    debug: true,
+    debug: false,
+    defaultNS: "translation",
     fallbackLng: "en",
-    backend: {
-      loadPath:
-        process.env.NODE_ENV === "production" && packageJSON.homepage
-          ? `${packageJSON.homepage}/locales/{{lng}}/{{ns}}.json`
-          : "/locales/{{lng}}/{{ns}}.json",
-    },
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
+    resources,
   });
 
 export default i18n;

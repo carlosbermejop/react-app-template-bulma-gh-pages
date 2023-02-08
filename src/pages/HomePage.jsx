@@ -1,9 +1,10 @@
-import { useState, Suspense } from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import {useState} from "react";
+import {useTranslation} from "react-i18next";
 
 const HomePage = () => {
   const [currentClickedTimes, setCurrentClickedTimes] = useState(0);
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   return (
     <section className="section">
@@ -17,17 +18,11 @@ const HomePage = () => {
           {t("homepage.clickMeBtn")}
         </button>
         <p>
-          {t("homepage.testClickCounterText", { count: currentClickedTimes })}
+          {t("homepage.testClickCounterText", {count: currentClickedTimes})}
         </p>
       </div>
     </section>
   );
 };
 
-export default function WrappedApp() {
-  return (
-    <Suspense>
-      <HomePage />
-    </Suspense>
-  );
-}
+export default HomePage;

@@ -1,8 +1,8 @@
-import { Suspense } from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import {useTranslation} from "react-i18next";
 
 const NotFoundPage = () => {
-  const { t } = useTranslation();
+  const {t} = useTranslation();
 
   return (
     <div className="notification is-danger">
@@ -12,10 +12,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default function WrappedApp() {
-  return (
-    <Suspense>
-      <NotFoundPage />
-    </Suspense>
-  );
-}
+export default NotFoundPage;
