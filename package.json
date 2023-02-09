@@ -1,5 +1,6 @@
 {
   "name": "react-app-template-bulma-gh-pages",
+  "homepage": "./",
   "version": "1.0.0",
   "description": "React App Template using JS and Bulma, distributed as an Electron app.",
   "author": {
@@ -7,8 +8,9 @@
     "email": "carlosbermejop@gmail.com"
   },
   "private": true,
-  "main": "src/electron.js",
+  "main": "public/electron.js",
   "dependencies": {
+    "html-webpack-plugin": "^5.5.0",
     "i18next": "^22.4.9",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-http-backend": "^2.1.1",
@@ -20,37 +22,50 @@
     "web-vitals": "^2.1.0"
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "electron-is": "^3.0.0",
-    "electron-is-dev": "^2.0.0",
-    "electron-squirrel-startup": "^1.0.0",
     "@electron-forge/cli": "^6.0.5",
     "@electron-forge/maker-deb": "^6.0.5",
     "@electron-forge/maker-rpm": "^6.0.5",
     "@electron-forge/maker-squirrel": "^6.0.5",
     "@electron-forge/maker-zip": "^6.0.5",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
     "cross-env": "^7.0.3",
-    "electron": "^23.0.0"
+    "electron": "^23.0.0",
+    "electron-builder": "^23.6.0",
+    "electron-is": "^3.0.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "gh-pages": "^3.2.3"
   },
   "scripts": {
-    "start": "electron-forge start",
+    "postinstall": "electron-builder install-app-deps",
+    "start:react": "react-scripts start",
     "build": "react-scripts build",
+    "dev:electron": "webpack --config webpack.electron.config.js --mode development && electron ./build/electron-app.js --dev",
+    "build:electron": "webpack --config webpack.electron.config.js",
+    "start:electron": "yarn electron . --dev",
     "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "prepackage": "npm run build",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "deploy:win": "yarn run electron-builder --win -c.extraMetadata.main=build/electron.js",
+    "deploy:macos": "electron-packager ./build app-name --overwrite --asar=false --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "deploy:linux": "electron-packager ./build app-name --overwrite --asar=false --platform=linux --arch=x64 --prune=true --out=release-builds",
+    "electron:build": "yarn build-electron && electron-builder build --publish never",
+    "electron-pack": "electron-builder build --win -c.extraMetadata.main=build/electron.js --publish never"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "build": {
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "extends": null
   },
   "browserslist": {
     "production": [

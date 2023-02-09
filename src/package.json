@@ -1,13 +1,5 @@
 {
   "name": "react-app-template-bulma-gh-pages",
   "version": "1.0.0",
-  "description": "React App Template using JS and Bulma, distributed as an Electron app.",
-  "main": "electron.js",
-  "private": true,
-  "author": {
-    "name": "Carlos Bermejo Pérez",
-    "email": "carlosbermejop@gmail.com"
-  },
-  "dependencies": {
-  }
+  "main": "electron-app.js"
 }
